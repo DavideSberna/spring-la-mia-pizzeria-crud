@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Il tuo titolo</title>
+    <title>Pizzeria</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
     
     <style>
+		
 		img{
 		  height: 350px; 
 		  object-fit: cover; 
@@ -29,6 +30,14 @@
 			<div class="text-center pt-5 pb-4">			
 				<h4 class="text-primary text-dark">Il nostro catalogo...</h4>
 			</div>
+			<div class="text-center pt-5 pb-4">			
+				<form>
+				    <div class="mb-3 d-flex align-items-center">
+				        <input type="text" class="form-control w-auto d-inline" name="nome" id="nome" placeholder="Nome pizza...">
+				        <button type="submit" class="btn btn-primary ms-2">Cerca</button>
+				    </div>
+				</form>
+			</div>
 			<div class="row">
 			    <div class="col-4 pt-4" th:if="${not #lists.isEmpty(pizzas)}" th:each="pizza : ${pizzas}">
 			        <div class="card m-auto border-0">
@@ -39,6 +48,7 @@
 			                	<p class="card-text" th:text="${pizza.prezzo} + ' ' + euro"></p>	
 							</div>
 			                <p class="card-text" th:text="${pizza.descrizione}"></p>
+			                <a class="btn btn-primary btn-sm" th:href="@{/pizza/{id}(id=${pizza.id})}">Show</a>
 			            </div>
 			        </div>
 			    </div>
