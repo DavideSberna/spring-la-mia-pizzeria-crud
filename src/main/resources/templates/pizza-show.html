@@ -52,7 +52,13 @@
 					                	<p class="card-text" th:text="${pizza.prezzo} + ' ' + euro"></p>	
 									</div>
 								    <p class="card-text" th:text="${pizza.descrizione}"></p>
-								  </div>
+								    <p>Voto: <span class="card-text" th:text="${pizza.voto}"></span> su 10</p> 
+					                <p class="card-text">
+										Allergeni:
+										<span th:if="${pizza.allergeni}">Si</span>
+										<span th:if="${not pizza.allergeni}">No</span>
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>

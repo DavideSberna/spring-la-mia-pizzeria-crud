@@ -22,13 +22,20 @@ public class Pizza {
 	
 	private double prezzo;
 	
+	private int voto;
 	
+	private boolean allergeni;
+	
+	
+	 
 	public Pizza() {}
-	public Pizza(String nome, String descrizione, String image, double prezzo) {
+	public Pizza(String nome, String descrizione, String image, double prezzo, int voto, boolean allergeni) {
 		setNome(nome);
 		setDescrizione(descrizione);
 		setImage(image);
 		setPrezzo(prezzo);
+		setVoto(voto);
+		setAllergeni(allergeni);
 	}
 	
 	public int getId() {
@@ -72,6 +79,22 @@ public class Pizza {
             throw new IllegalArgumentException("Il prezzo non può essere 0 o minore.");
         }
 		this.prezzo = prezzo;
+	}
+	
+	public int getVoto() {
+		return voto;
+	}
+	public void setVoto(int voto) {
+		if (voto < 0) {
+            throw new IllegalArgumentException("Il voto non può essere minore di 0.");
+        }
+		this.voto = voto;
+	}
+	public boolean isAllergeni() {
+		return allergeni;
+	}
+	public void setAllergeni(boolean allergeni) {
+		this.allergeni = allergeni;
 	}
 	
 	

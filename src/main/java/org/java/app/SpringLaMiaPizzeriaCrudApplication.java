@@ -21,10 +21,10 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Pizza pizza1 = new Pizza("Margherita", "Pizza leggera, semplice e facile da digerire", "margherita.jpg", 20.00);
-		Pizza pizza2 = new Pizza("Mangia e taci", "Pizza leggera, semplice e facile da digerire", "mangia-e-taci.jpg", 30.20);
-		Pizza pizza3 = new Pizza("Bufalina", "Pizza leggera, semplice e facile da digerire", "bufalina.jpg", 22.90);
-		Pizza pizza4 = new Pizza("Bella Brescia", "Pizza leggera, semplice e facile da digerire", "bella-brescia.jpg", 32.60);
+		Pizza pizza1 = new Pizza("Margherita", "Pizza leggera, semplice e facile da digerire", "margherita.jpg", 20.00, 7, true);
+		Pizza pizza2 = new Pizza("Mangia e taci", "Pizza leggera, semplice e facile da digerire", "mangia-e-taci.jpg", 30.20, 8, false);
+		Pizza pizza3 = new Pizza("Bufalina", "Pizza leggera, semplice e facile da digerire", "bufalina.jpg", 22.90, 9, true);
+		Pizza pizza4 = new Pizza("Bella Brescia", "Pizza leggera, semplice e facile da digerire", "bella-brescia.jpg", 32.60, 6, false);
 		
 		pizzaService.save(pizza1);
 		pizzaService.save(pizza2);

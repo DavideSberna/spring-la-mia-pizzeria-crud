@@ -30,8 +30,8 @@ public class PizzaService {
 		return pizzaRepo.findByNome(nome);
 	}
 	
-	public List<Pizza> findByNomeContaining(String nome){
-		return pizzaRepo.findByNomeContaining(nome);
+	public List<Pizza> findByNomeContaining(String nome, int voto, boolean allergeni){
+		return pizzaRepo.searchPizze(nome, voto, allergeni);
 	}
 	
 	public List<Pizza> findByIdNotLike(int id){

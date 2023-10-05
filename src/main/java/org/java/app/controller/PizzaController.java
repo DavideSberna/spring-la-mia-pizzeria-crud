@@ -21,20 +21,36 @@ public class PizzaController {
 	private PizzaService pizzaService;
 	
 	@GetMapping("/")
-	public String getIndex(@RequestParam(name = "nome", required = false) String nome, Model model) {
-		
-		List<Pizza> pizzas = null;
-		
-		if(nome == null) {
-			pizzas = pizzaService.findAll();
-		} else {
-			pizzas = pizzaService.findByNomeContaining(nome);
-			
-		}
-		
-		model.addAttribute("pizzas", pizzas);
-		
-		return "home";
+	public String getIndex(
+	        @RequestParam(name = "nome", required = false) String nome,
+	        @RequestParam(name = "voto", required = false) Integer voto,
+	        @RequestParam(name = "allergeni", required = false) String allergeniStr,
+	        Model model) {
+
+	    List<Pizza> pizzas = null;
+	    
+	    boolean allergeni = false;
+	    
+	    if (allergeniStr != null && !allergeniStr.isEmpty()) {
+	        allergeni = allergeniStr.equals("1");
+	    }
+
+	    if (nome == null && voto == null && !allergeni) {
+	        pizzas = pizzaService.findAll();
+	    } else {
+	        if (voto == null) {
+	            voto = 0;
+	        }
+	        pizzas = pizzaService.findByNomeContaining(nome, voto, allergeni);
+	    }
+
+	    model.addAttribute("pizzas", pizzas);
+	    model.addAttribute("nome", nome);
+	    model.addAttribute("voto", voto);
+	   
+	    
+
+	    return "home";
 	}
 	
 	@GetMapping("/pizza/{id}")
