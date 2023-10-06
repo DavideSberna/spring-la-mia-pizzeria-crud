@@ -45,9 +45,13 @@
 				</form>
 			</div>
 			<div class="row">
+				<div class="d-flex align-items-center">
+					<p class="p-0 m-0">Aggiungi una nuova pizza</p>
+					<a class="btn btn-primary ms-2" th:href="@{/create}" role="button">+</a>
+				</div>
 			    <div class="col-4 pt-4" th:if="${not #lists.isEmpty(pizzas)}" th:each="pizza : ${pizzas}">
 			        <div class="card m-auto border-0">
-			            <img class="card-img-top" th:src="@{/} + ${pizza.image}" alt="card">
+			            <img class="card-img-top" th:src="${pizza.image}" alt="card">
 			            <div class="card-body">
 							<div class="d-flex justify-content-between">
 			                	<h5 class="card-title" th:text="${pizza.nome}"></h5>

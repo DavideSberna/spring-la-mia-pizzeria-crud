@@ -21,10 +21,10 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Pizza pizza1 = new Pizza("Margherita", "Pizza leggera, semplice e facile da digerire", "margherita.jpg", 20.00, 7, true);
-		Pizza pizza2 = new Pizza("Mangia e taci", "Pizza leggera, semplice e facile da digerire", "mangia-e-taci.jpg", 30.20, 8, false);
-		Pizza pizza3 = new Pizza("Bufalina", "Pizza leggera, semplice e facile da digerire", "bufalina.jpg", 22.90, 9, true);
-		Pizza pizza4 = new Pizza("Bella Brescia", "Pizza leggera, semplice e facile da digerire", "bella-brescia.jpg", 32.60, 6, false);
+		Pizza pizza1 = new Pizza("Margherita", "Pizza leggera, semplice e facile da digerire", "https://media-assets.vanityfair.it/photos/61e444841e21bc3bd54b5357/1:1/w_2832,h_2832,c_limit/pizza%20tendenze.jpg", 20.00, 7, true);
+		Pizza pizza2 = new Pizza("Mangia e taci", "Pizza leggera, semplice e facile da digerire", "https://assets.website-files.com/615643f927c118dd46b32c80/61dff3812029d02ee8eb5ced_Best%20Pizza%20in%20Clifton%20Hhill.jpg", 30.20, 8, false);
+		Pizza pizza3 = new Pizza("Bufalina", "Pizza leggera, semplice e facile da digerire", "https://www.guardini.com/images/guardinispa/ricette/full/pizza_basilico.jpg", 22.90, 9, true);
+		Pizza pizza4 = new Pizza("Bella Brescia", "Pizza leggera, semplice e facile da digerire", "https://i2.wp.com/www.piccolericette.net/piccolericette/wp-content/uploads/2016/12/3018_Pizza.jpg?resize=895%2C616&ssl=1", 32.60, 6, false);
 		
 		pizzaService.save(pizza1);
 		pizzaService.save(pizza2);

@@ -1,10 +1,17 @@
 package org.java.app.db.pojo;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Pizza {
@@ -14,15 +21,21 @@ public class Pizza {
 	private int id;
 	
 	@Column(unique = true)
-	private String nome;
+    @Length(min = 1, max = 30, message = "Il nome deve essere tra 1 e 30 caratteri.")
+    private String nome;
 	
-	private String descrizione;
+	@Length(min = 1, max = 200, message = "La descrizione non può essere vuota o superare i 200 caratteri.")
+    private String descrizione;
 	
-	private String image;
+	@NotBlank(message = "Il campo immagine non può essere vuoto.")
+    private String image;
 	
-	private double prezzo;
+	@DecimalMin(value = "0.01", message = "Il prezzo deve essere maggiore di 0.")
+    private double prezzo;
 	
-	private int voto;
+	@Min(value = 0, message = "Il voto non può essere inferiore a 0.")
+    @Max(value = 10, message = "Il voto non può essere superiore a 10.")
+    private int voto;
 	
 	private boolean allergeni;
 	
@@ -48,36 +61,28 @@ public class Pizza {
 		return nome;
 	}
 	public void setNome(String nome) {
-		if (nome == null || nome.trim().isEmpty()) {
-            throw new IllegalArgumentException("Il nome non può essere vuoto o composto solo da spazi.");
-        }
+		
 		this.nome = nome;
 	}
 	public String getDescrizione() {
 		return descrizione;
 	}
 	public void setDescrizione(String descrizione) {
-		if (descrizione == null || descrizione.trim().isEmpty()) {
-            throw new IllegalArgumentException("La descrizione non può essere vuota o composto solo da spazi.");
-        }
+		
 		this.descrizione = descrizione;
 	}
 	public String getImage() {
 		return image;
 	}
 	public void setImage(String image) {
-		if (image == null || image.trim().isEmpty()) {
-            throw new IllegalArgumentException("L'immagine non può essere vuota o composto solo da spazi.");
-        }
+		
 		this.image = image;
 	}
 	public double getPrezzo() {
 		return prezzo;
 	}
 	public void setPrezzo(double prezzo) {
-		if (prezzo <= 0) {
-            throw new IllegalArgumentException("Il prezzo non può essere 0 o minore.");
-        }
+		
 		this.prezzo = prezzo;
 	}
 	
@@ -85,9 +90,7 @@ public class Pizza {
 		return voto;
 	}
 	public void setVoto(int voto) {
-		if (voto < 0) {
-            throw new IllegalArgumentException("Il voto non può essere minore di 0.");
-        }
+		
 		this.voto = voto;
 	}
 	public boolean isAllergeni() {
