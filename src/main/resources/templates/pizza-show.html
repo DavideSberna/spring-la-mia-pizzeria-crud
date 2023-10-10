@@ -58,6 +58,13 @@
 										<span th:if="${pizza.allergeni}">Si</span>
 										<span th:if="${not pizza.allergeni}">No</span>
 									</p>
+									
+									<a class="btn btn-primary btn-sm" th:href="@{/pizza/{id}(id=${pizza.id})}">Guarda</a>
+					                <a class="btn btn-success btn-sm" th:href="@{/edit/{id}(id=${pizza.id})}">Modifica</a>
+					                <form class="d-inline" id="pizza-form" th:action="@{/delete/{id}(id=${pizza.id})}" method="post">
+										 <button type="submit" class="btn btn-danger btn-sm">Elimina</button>
+									</form>
+									
 								</div>
 							</div>
 						</div>
@@ -67,11 +74,11 @@
 		</section>
 		<section class="container">
 			 
-			<div class="row">
+			<div class="row" th:if="${not #lists.isEmpty(pizzas)}">
 				<div class="mt-5">
 					<h3>Tutte le altre pizze:</h3>
 				</div>
-			    <div class="col-3 pt-4" th:if="${not #lists.isEmpty(pizzas)}" th:each="pizza : ${pizzas}">
+			    <div class="col-3 pt-4" th:each="pizza : ${pizzas}">
 			        <div class="card m-auto border-0">
 			            <img class="card-img-top" th:src="${pizza.image}" alt="card">
 			            <div class="card-body">
@@ -80,16 +87,18 @@
 			                	<p class="card-text" th:text="${pizza.prezzo} + ' ' + euro"></p>	
 							</div>
 			                <p class="card-text" th:text="${pizza.descrizione}"></p>
-			                <a class="btn btn-primary btn-sm" th:href="@{/pizza/{id}(id=${pizza.id})}">Show</a>
+			                <a class="btn btn-primary btn-sm mb-2" style="margin-right: 4px;" th:href="@{/pizza/{id}(id=${pizza.id})}">Guarda</a>
+			                <a class="btn btn-success btn-sm mb-2" th:href="@{/edit/{id}(id=${pizza.id})}">Modifica</a>
+			                
+			                <form class="d-inline mb-2" id="pizza-form-delete" th:action="@{/delete/{id}(id=${pizza.id})}" method="post">
+								 <button type="submit" class="btn btn-danger btn-sm">Elimina</button>
+							</form>
 			            </div>
 			        </div>
-			    </div>
-			    <div th:if="${#lists.isEmpty(pizzas)}">
-			        <p class="text-center mt-4">Non ci sono pizze da mostrare.</p>
 			    </div>
 			</div>
 		</section>
 	</main>
-
+	
 </body>
 </html>

@@ -90,9 +90,48 @@ public class PizzaController {
 		
 		
 		return "redirect:/";
-
 	
 	}
+	
+	@GetMapping("/edit/{id}")
+	public String edit(
+			@PathVariable("id") Integer id,
+			Model model
+			) {
+		
+		model.addAttribute("pizza", pizzaService.findById(id));
+		System.out.println(pizzaService.findById(id));
+		
+		return "edit";
+	}
+	
+	@PostMapping("/edit/{id}")
+	public String update(
+			@Valid @ModelAttribute("pizza") Pizza formPizza,
+			BindingResult bindingResult,
+			Model model
+			) {
+		
+		if(bindingResult.hasErrors()) {
+			return "/edit";
+		}
+		
+		
+		pizzaService.save(formPizza);
+		
+		return "redirect:/";
+		
+	}
+	
+	@PostMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Integer id) {
+		
+		pizzaService.deleteById(id);
+		
+		return "redirect:/";
+	}
+	
+	
 	
 
 }

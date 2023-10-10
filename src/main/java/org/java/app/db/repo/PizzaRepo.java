@@ -16,5 +16,7 @@ public interface PizzaRepo extends JpaRepository<Pizza, Integer> {
     public List<Pizza> searchPizze(@Param("nome") String nome, @Param("voto") int voto, @Param("allergeni") boolean allergeni);
 	
 	public List<Pizza> findByIdNotLike(int id);
+	
+	public List<Pizza> deleteById(int id);
 
 }

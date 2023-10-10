@@ -37,5 +37,9 @@ public class PizzaService {
 	public List<Pizza> findByIdNotLike(int id){
 		return pizzaRepo.findByIdNotLike(id);
 	}
+	
+	public List<Pizza> deleteById(int id){
+		return pizzaRepo.deleteById(id);
+	}
 
 }
